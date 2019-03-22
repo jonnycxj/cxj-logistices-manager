@@ -13,6 +13,7 @@ import com.sxt.pojo.Role;
 import com.sxt.service.IRoleService;
 
 @Controller
+
 public class RoleController {
 	@Resource
 	private IRoleService service;
@@ -30,6 +31,6 @@ public class RoleController {
 	public String query(Role role , Model model) throws Exception {
 		List<Role> list = service.query(role);
 		model.addAttribute("list", list);
-		return "role";
+		return "role/role";
 	}
 }

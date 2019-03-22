@@ -37,10 +37,13 @@ public class RoleServiceImple  implements IRoleService {
 
 	@Override
 	public List<Role> query(Role role) throws Exception {
+		
 		RoleExample example = new RoleExample();
 		Criteria criteria = example.createCriteria();
-		if(role.getRoleName()!=null&&"".equals(role.getRoleName())) {
-			criteria.andRoleNameLike("%"+role.getRoleName()+"%");
+		if(role!=null) {
+			if(role.getRoleName()!=null&&!"".equals(role.getRoleName())) {
+				criteria.andRoleNameLike("%"+role.getRoleName()+"%");
+			}
 		}
 		return dao.selectByExample(example);
 	}
