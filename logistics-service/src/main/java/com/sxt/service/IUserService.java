@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.UserDto;
 import com.sxt.pojo.User;
 
@@ -53,4 +54,10 @@ public interface IUserService {
 	 * @return
 	 */
 	public String addOrUpdate(Integer id,Model model) throws Exception;
+	/**
+	 * 分页带条件查询用户信息
+	 * @param dto
+	 * @return
+	 */
+	public PageInfo<User> queryPage(UserDto dto) throws Exception;
 }

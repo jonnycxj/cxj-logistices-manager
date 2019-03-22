@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.PageInfo;
 import com.sxt.dto.UserDto;
 import com.sxt.pojo.User;
 import com.sxt.service.IUserService;
@@ -63,5 +64,15 @@ public class UserController {
 		
 		return "redirect:/user/query";
 	}
+	
+	@RequestMapping("/queryPage")
+	public String queryPage(UserDto userDto,Model model)throws Exception {
+		System.out.println("userddddd:"+userDto);
+		System.out.println(userDto.getPageNum()+"he"+userDto.getPageSize());
+		PageInfo<User> pageModel = service.queryPage(userDto);
+		model.addAttribute("pageModel", pageModel);
+		return "user/user";
+	}
+
 	
 }

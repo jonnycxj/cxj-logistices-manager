@@ -69,26 +69,31 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list }" var="user">
+				<c:forEach items="${pageModel.list}" var="user">
 					<tr>
-						<td><input name="" type="checkbox" value="" /></td>
+						<td><input name="id" type="checkbox" value="${user.userId}" /></td>
 						<td>${user.userId}</td>
 						<td>${user.userName }</td>
 						<td>${user.realName }</td>
 						<td>${user.email }</td>
 						<td>${user.phone}</td>
-						<td><a href="user/addOrUpdate?id=${user.userId }"class="tablelink">修改</a>
-						 <a href="user/deleteUser?id=${user.userId }" class="tablelink"> 删除</a></td>
+						<td><a href="/user/addOrUpdate?id=${user.userId }"class="tablelink">修改</a>
+						 <a href="/user/deleteUser?id=${user.userId}" class="tablelink"> 删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="inline pull-right page" style="margin-top: 20px;">
+	<form action="/user/queryPage" id="pager">
+		<input type="hidden" name="pageSize" id="pageSize" value="${pageModel.pageSize }">
+		<input type="hidden" name="pageNum" id="pageNum" value="${pageModel.pageNum }">
+	</form>
+	<jsp:include page="/pageBar.jsp"></jsp:include>
+</div>
 	</div>
-
 	<script type="text/javascript">
 		$('.tablelist tbody tr:odd').addClass('odd');
 	</script>
-
 	<div style="display: none">
 		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'
 			language='JavaScript' charset='gb2312'></script>

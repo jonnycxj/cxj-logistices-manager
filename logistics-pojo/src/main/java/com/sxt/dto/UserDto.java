@@ -2,9 +2,10 @@ package com.sxt.dto;
 
 import java.util.List;
 
+import com.sxt.pojo.BasePage;
 import com.sxt.pojo.User;
 
-public class UserDto {
+public class UserDto extends BasePage {
 	
 	private User user;
 	

@@ -258,11 +258,11 @@
   <insert id="addUserIdAndRoleId">
   insert into t_user_role(user_id,role_id) value(#{param1},#{param2})
   </insert>
-  <select id="selectRoleIdByUserId" parameterType="int" resultMap="int">
+  <select id="selectRoleIdByUserId"  resultType="int">
   select role_id from t_user_role where user_id=#{id}
   </select>
-  
-  <delete id="delectRoleByUserId" parameterType="int" >
+  <!--  -->
+  <delete id="delectRoleByUserId" >
   delete from t_user_role where user_id=#{id}
   </delete>
   
