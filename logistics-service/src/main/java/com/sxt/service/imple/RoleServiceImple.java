@@ -48,4 +48,10 @@ public class RoleServiceImple  implements IRoleService {
 		return dao.selectByExample(example);
 	}
 
+	@Override
+	public List<Role> selectRoleByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return dao.selectRoleByUserId(userId);
+	}
+
 }

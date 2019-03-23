@@ -49,9 +49,11 @@ public class UserServiceImple implements IUserService {
 	@Override
 	public List<User> query(User user) throws Exception {
 		UserExample example=new UserExample();
-		if(user!=null&&user.getRealName()!=null&&!user.getRealName().equals(" ")) {
-			Criteria criteria = example.createCriteria();
-			criteria.andUserNameLike("%"+user.getRealName()+"%");
+		if(user!=null){
+			if(!"".equals(user.getUserName()) && user.getUserName()!= null){
+				// 根据账号查询
+				example.createCriteria().andUserNameEqualTo(user.getUserName());
+			}
 		}
 		return userDAO.selectByExample(example);
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.sxt.service.IUserService;
 @Controller
 @RequestMapping("/user/")
 public class UserController {
+	
 	@Resource
 	private IUserService service;
 	/**
@@ -31,7 +33,6 @@ public class UserController {
 		model.addAttribute("list", list);
 		return "user/user";
 	}
-	
 	/**
 	 * 增加或者删除
 	 * @param id
@@ -52,19 +53,15 @@ public class UserController {
 	 */
 	@RequestMapping("/saveUserAddOrUpdate")
 	public String saveUserAddOrUpdate(UserDto userDto,Model model)throws Exception{
-		
 		boolean b = service.saveUserAddOrUpdate(userDto, model);
 		return "redirect:/user/query";
 	}
-	
 	@RequestMapping("/deleteUser")
 	public String deleteUser(Integer id) throws Exception {
 		service.removeUser(id);
-		
-		
 		return "redirect:/user/query";
 	}
-	
+	@RequiresRoles("HR")
 	@RequestMapping("/queryPage")
 	public String queryPage(UserDto userDto,Model model)throws Exception {
 		System.out.println("userddddd:"+userDto);
@@ -73,6 +70,4 @@ public class UserController {
 		model.addAttribute("pageModel", pageModel);
 		return "user/user";
 	}
-
-	
 }

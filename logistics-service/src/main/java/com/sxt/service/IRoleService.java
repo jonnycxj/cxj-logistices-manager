@@ -34,6 +34,12 @@ public interface IRoleService {
 	 * @throws Exception
 	 */
 	public List<Role> query(Role role) throws Exception;
+	/**
+	 * 通过user_id查询所有用户的所有角色信息
+	 * @param userId
+	 * @return
+	 */
+	public List<Role> selectRoleByUserId(Integer userId);
 	
 
 }

@@ -178,4 +178,15 @@
       role_desc = #{roleDesc,jdbcType=VARCHAR}
     where role_id = #{roleId,jdbcType=INTEGER}
   </update>
+  
+  <!-- 用过用户ID查询用户的所有角色信息 -->
+  
+  <select id="selectRoleByUserId" resultMap="BaseResultMap">
+  select * from t_role where role_id in (
+  select role_id  from t_user_role 
+  where user_id=#{userId}
+  )
+  </select>
+  
+  
 </mapper>
