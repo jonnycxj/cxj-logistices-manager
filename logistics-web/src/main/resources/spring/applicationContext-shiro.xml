@@ -42,6 +42,7 @@
                 /lib/** = anon
                 /login.do = authc
                 /** = authc
+                /favicon.ico=anon
  			</value>
  		</property>
  	</bean>

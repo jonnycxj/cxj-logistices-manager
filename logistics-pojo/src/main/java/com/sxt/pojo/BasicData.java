@@ -40,4 +40,11 @@ public class BasicData {
     public void setBaseDesc(String baseDesc) {
         this.baseDesc = baseDesc == null ? null : baseDesc.trim();
     }
+
+	@Override
+	public String toString() {
+		return "BasicData [baseId=" + baseId + ", parentId=" + parentId + ", baseName=" + baseName + ", baseDesc="
+				+ baseDesc + "]";
+	}
+    
 }

@@ -55,7 +55,9 @@ public class UserServiceImple implements IUserService {
 				example.createCriteria().andUserNameEqualTo(user.getUserName());
 			}
 		}
-		return userDAO.selectByExample(example);
+		List<User> result = userDAO.selectByExample(example);
+		System.out.println("user result"+result);
+		return result;
 	}
 
 	@Override
